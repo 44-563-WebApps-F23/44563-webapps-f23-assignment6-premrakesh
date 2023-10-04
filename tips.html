@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tips</title>
+</head>
+<body>
+
+<h2>Prem Rakesh Shows tip amounts</h2>
+
+<form>
+    <label for="baseamount">Enter base amount</label>
+    <input type="number" id="baseamount" name="bamount" value="50"><br>
+
+    <label for="percent">Enter the percent</label>
+    <input type="number" id="percent" name="percent"><br>
+
+    <input type="button" onclick="calculateTips()" value="Show tip">
+    <p id="tip">Tip results will be displayed here</p>
+
+    <label>Choose an operation:</label><br>
+    <input type="radio" id="sum" name="op" value="sum" onclick="chooseOp()">
+    <label for="sum">Sum</label><br>
+
+    <input type="radio" id="diff" name="op" value="difference" onclick="chooseOp()">
+    <label for="diff">Difference</label><br>
+
+    <input type="radio" id="mult" name="op" value="product" onclick="chooseOp()">
+    <label for="mult">Product</label><br>
+    
+    <p id="result">Operation results will be displayed here</p>
+</form>
+
+<script> 
+function calculateTips() {
+    var baseAmount = parseFloat(document.getElementById("baseamount").value);
+    var percent = parseFloat(document.getElementById("percent").value);
+    var myOutput = "";
+
+    for (let i = 0; i <= 16; i += 4) {
+        var tipAmount = (baseAmount * (percent / 100) + i).toFixed(1);
+        myOutput += `${percent + i}% is $${tipAmount}; `;
+    }
+
+    document.getElementById("tip").innerHTML = "Tips are: " + myOutput;
+}
+
+function chooseOp() {
+    var baseAmount = parseFloat(document.getElementById("baseamount").value);
+    var tipPercent = parseFloat(document.getElementById("percent").value);
+    var r = document.getElementById("result");
+    var res;
+
+    if (document.getElementById("sum").checked) {
+        res = baseAmount + tipPercent;
+        r.innerHTML = `Sum of ${baseAmount} and ${tipPercent} is ${res}`;
+    } else if (document.getElementById("mult").checked) {
+        res = baseAmount * tipPercent;
+        r.innerHTML = `Product of ${baseAmount} and ${tipPercent} is ${res}`;
+    } else if (document.getElementById("diff").checked) {
+        res = baseAmount - tipPercent;
+        r.innerHTML = `Difference of ${baseAmount} and ${tipPercent} is ${res}`;
+    }
+}
+</script>
+
+</body>
+</html>

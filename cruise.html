@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Goes on a cruise</title>
+</head>
+<body>
+
+<h2>Prem Rakesh goes on a cruise</h2>
+
+<form>
+    <label for="cb1">Shares Cabin</label>
+    <input type="checkbox" id="cb1" value="True"> <br>
+
+    <label for="cb2">Breakfast</label>
+    <input type="checkbox" id="cb2" value="True"> <br>
+
+    <label for="cb3">Pool Pass</label>
+    <input type="checkbox" id="cb3" value="False"> <br>
+
+    <input type="button" onclick="selectCruise()" value="Select a cruise">
+    <div id="text">This will be replaced</div><br>
+</form>
+
+<form>
+    <label for="days">Enter the number of days</label>
+    <input type="text" id="days" value="days"> <br>
+
+    <label for="price">Enter price</label>
+    <input type="text" id="price" value="100"> <br>
+
+    <input type="button" onclick="updateCruise()" value="Update the cruise">
+</form>
+
+<script>
+    var my_cruise = {
+        shared: false,
+        breakfast: false,
+        pool: false,
+        days: 7,
+        price: 1000
+    };
+
+    function selectCruise() {
+        my_cruise.shared = document.getElementById("cb1").checked;
+        my_cruise.breakfast = document.getElementById("cb2").checked;
+        my_cruise.pool = document.getElementById("cb3").checked;
+
+        let resultText = "Selected Cruise Options: ";
+
+        if (my_cruise.shared) {
+            resultText += "Shares Cabin, ";
+        }
+
+        if (my_cruise.breakfast) {
+            resultText += "Breakfast, ";
+        }
+
+        if (my_cruise.pool) {
+            resultText += "Pool Pass";
+        }
+
+        // Display the result text
+        document.getElementById("text").innerHTML = resultText;
+    }
+
+    function updateCruise() {
+        var days = document.getElementById("days").value;
+        var price = document.getElementById("price").value;
+
+        my_cruise.days = days;
+        my_cruise.price = price;
+
+        // Display the updated cruise details
+        document.getElementById("text").innerHTML = "Updated Cruise Details: Days - " + my_cruise.days + ", Price - " + my_cruise.price;
+    }
+</script>
+
+</body>
+</html>

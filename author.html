@@ -19,9 +19,27 @@
 
 
 <p id="result">result will be displayed here</p>
-
+<div>
+    <img src="Egypt.jpg" id="image" width="100" height="100" onclick="selectImage()"> 
+</div>
 <script> 
-
+useImage=1;
+function selectImage(){
+    switch(useImage){
+        case 1:
+            document.getElementById("image").src="colosseum.jpg"
+            useImage=2;
+            break;
+        case 2:
+            document.getElementById("image").src="Eiffel-Tower-Dream.jpg";
+            useImage=3;
+            break;
+        case 3:
+            document.getElementById("image").src="Egypt.jpg";
+            useImage=1;
+            break;
+    }
+}
 var good=0;
 var oops=0;
 function checkAuthor (){
@@ -33,11 +51,11 @@ function checkAuthor (){
     }
     else{
         oops++;
-        alert("Sorry")
+        alert("Sorry");
     }
     var resultElement =document.getElementById("result");
     resultElement.innerHTML="Correct guesses: "+ good + "<br>Incorrect guesses:"+oops;
-}
+    }
 </script>
 
 </body>
