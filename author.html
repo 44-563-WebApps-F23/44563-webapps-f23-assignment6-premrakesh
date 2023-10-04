@@ -49,12 +49,16 @@ function checkAuthor (){
         good++;
         alert("You got it right!");
     }
-    else{
+    else if (Secret!=guess && oops<7){
         oops++;
         alert("Sorry");
     }
+    else{
+        alert("Sorry, ran out of guesses.")
+    }
     var resultElement =document.getElementById("result");
     resultElement.innerHTML="Correct guesses: "+ good + "<br>Incorrect guesses:"+oops;
+    
     }
 </script>
 
