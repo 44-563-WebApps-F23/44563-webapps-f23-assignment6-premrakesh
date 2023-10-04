@@ -2,35 +2,47 @@
 <html>
 <head>
     <title>Goes on a cruise</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
-<h2>Prem Rakesh goes on a cruise</h2>
+<div class="container mt-5">
+    <h2 class="text-center">Prem Rakesh goes on a cruise</h2>
 
-<form>
-    <label for="cb1">Shares Cabin</label>
-    <input type="checkbox" id="cb1" value="True"> <br>
+    <form>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="cb1" value="True">
+            <label class="form-check-label" for="cb1">Shares Cabin</label>
+        </div>
 
-    <label for="cb2">Breakfast</label>
-    <input type="checkbox" id="cb2" value="True"> <br>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="cb2" value="True">
+            <label class="form-check-label" for="cb2">Breakfast</label>
+        </div>
 
-    <label for="cb3">Pool Pass</label>
-    <input type="checkbox" id="cb3" value="False"> <br>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="cb3" value="False">
+            <label class="form-check-label" for="cb3">Pool Pass</label>
+        </div>
 
-    <input type="button" onclick="selectCruise()" value="Select a cruise">
-    <div id="text">This will be replaced</div><br>
-</form>
+        <button type="button" class="btn btn-primary" onclick="selectCruise()">Select a cruise</button>
+        <div id="text" class="mt-3">This will be replaced</div><br>
+    </form>
 
-<form>
-    <label for="days">Enter the number of days</label>
-    <input type="text" id="days" value="days"> <br>
+    <form>
+        <div class="form-group">
+            <label for="days">Enter the number of days</label>
+            <input type="text" class="form-control" id="days" value="7">
+        </div>
 
-    <label for="price">Enter price</label>
-    <input type="text" id="price" value="100"> <br>
+        <div class="form-group">
+            <label for="price">Enter price</label>
+            <input type="text" class="form-control" id="price" value="1000">
+        </div>
 
-    <input type="button" onclick="updateCruise()" value="Update the cruise">
-</form>
-
+        <button type="button" class="btn btn-primary" onclick="updateCruise()">Update the cruise</button>
+    </form>
+</div>
 <script>
     var my_cruise = {
         shared: false,
@@ -59,7 +71,6 @@
             resultText += "Pool Pass";
         }
 
-        // Display the result text
         document.getElementById("text").innerHTML = resultText;
     }
 
@@ -70,7 +81,6 @@
         my_cruise.days = days;
         my_cruise.price = price;
 
-        // Display the updated cruise details
         document.getElementById("text").innerHTML = "Updated Cruise Details: Days - " + my_cruise.days + ", Price - " + my_cruise.price;
     }
 </script>
